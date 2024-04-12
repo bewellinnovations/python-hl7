@@ -80,11 +80,11 @@ class MLLPClient(object):
         return self.send(data)
 
     def send(self, data):
-        """Low-level, direct access to the socket.send (data must be already
+        """Low-level, direct access to the socket.sendall (data must be already
         wrapped in an MLLP container).  Blocks until the server returns.
         """
         # upload the data
-        self.socket.send(data)
+        self.socket.sendall(data)
         # wait for the ACK/NACK
         return self.socket.recv(RECV_BUFFER)
 
